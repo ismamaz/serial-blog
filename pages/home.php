@@ -94,9 +94,42 @@ $req->closeCursor();
 				<input type="email" id="mail" name="mail" placeholder="Votre adresse mail : " required><br>
 				<input type="password" id="password" name="password" placeholder="Votre mot de passe :">
 				<br>
+				<?php
+//récupération des variables password et mail
+
+$pass=htmlspecialchars($_POST['password']);
+$mail=htmlspecialchars($_POST['mail']);
+
+
+//connexion à la table membres
+$pdo=new PDO('mysql:host=localhost;dbname=BigBlog;charset=utf8', 'root', 'flingualelas&');
+
+$req=$pdo->prepare('SELECT * FROM membres WHERE mail = :mail AND password = :password');
+
+$req->execute(array(
+'mail'=>$mail,
+'password'=>$pass
+	));
+
+$donnees=$req->fetch();
+
+if($donnees){
+	$_SESSION['pseudo']=$donnees['pseudo'];
+
+	echo 'Bienvenue , '.$_SESSION['pseudo'].'!';
+
+
+
+}else{
+	echo '<span style="color:red;">Informations incorrectes</span>';
+}
+
+?>
 				<input type="submit" id="submit" value="Envoyer">
 				</form>
 		</aside>
+
+
 
 		<aside id="inscr">
 		    <a href="?p=inscription"><p class="intitule">Inscription</p></a>

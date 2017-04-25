@@ -15,7 +15,7 @@
 <?php
 
 
-//Récupération des infos dans les variables dédiées
+//Récupération des infos dans les variables pseudo ,mail et password
 if (isset($_POST['pseudo'])){
 	$pseudo=htmlspecialchars($_POST['pseudo']);
 }
@@ -35,13 +35,47 @@ if (isset($_POST['password'])){
 	$bdd= new PDO('mysql:host=localhost;dbname=BigBlog;charset=utf8', 'root', 'flingualelas&');
 
 
-//Vérification de la disponiblité du pseudo et du mail dans la table membres
+// Vérification de la disponiblité du pseudo 
+
+$res=$bdd->prepare("SELECT id FROM membres WHERE pseudo=:pseudo");
+$res->execute(array(
+	'pseudo'=>$pseudo
+	));
+$donnees=$res->fetch();
+$dispos=0;
+
+if($donnees){
+	echo '<br><span style="color:red;margin-top:8px;margin-left:200px;">Ce pseudo est déja pris!</span>';
+}else{
+$dispos+=1;
+}
+
+$res->closeCursor();
+
+
+
+// Vérification de la disponiblité du mail 
+
+$res=$bdd->prepare("SELECT id FROM membres WHERE mail = :mail");
+$res->execute(array(
+'mail'=>$mail
+	));
+$donnees= $res->fetch();
+if ($donnees){
+	echo ' <br><span style="color:red;margin-top:8px;margin-left:200px;">Cette adresse mail est déja inscrite!</span>';
+}else{
+	$dispos+=1;
+}
 
 
 
 
-//Inscription du nouveau membre dans la table
 
+
+//Inscription du nouveau membre dans la table si on a les 2 dispos
+
+
+if($dispos==2){
 	$req=$bdd->prepare('INSERT INTO membres (pseudo, mail, password) VALUES (:pseudo, :mail, :password)');
 
 	$donnees=$req->execute(array(
@@ -49,7 +83,7 @@ if (isset($_POST['password'])){
 		'mail'=>$mail,
 		'password'=>$pass
 		));
-
+}else{}
 
 
 
