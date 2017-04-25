@@ -39,6 +39,8 @@ while ($donnees=$req->fetch()){
 							</div>
 				</div>';
 }
+
+$req->closeCursor();
 ?>
 					
 
