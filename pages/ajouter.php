@@ -1,5 +1,10 @@
 <h2>Ajouter un article</h2>
+<?php
 
+if (!isset($_SESSION['pseudo'])){
+  echo 'vous devez vous connecter pour pouvoir participer.';
+}
+?>
 
   <form>
      <label for="titre">Le titre : </label><input type="text" id="titre" name="titre"><br>

@@ -131,6 +131,8 @@ if($donnees){
 
 
 
+
+
 		<aside id="inscr">
 		    <a href="?p=inscription"><p class="intitule">Inscription</p></a>
 		</aside>
