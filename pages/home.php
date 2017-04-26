@@ -87,7 +87,9 @@ $req->closeCursor();
 
 		</div>
 
-
+<?php
+if (!isset($_SESSION['pseudo'])){
+?>
 		<aside>
 				<form method="post" action="#">
 				<p class="intitule">Connexion</p>
@@ -128,17 +130,24 @@ if($donnees){
 				<input type="submit" id="submit" value="Envoyer">
 				</form>
 		</aside>
+<?php
+}
+?>
 
 
-
-
+<?php
+if(!isset($_SESSION['pseudo'])){
+?>
 
 		<aside id="inscr">
 		    <a href="?p=inscription"><p class="intitule">Inscription</p></a>
 		</aside>
 
-	</section>
+<?php
+}
+?>
 
+	</section>
 
 
 

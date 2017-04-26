@@ -19,9 +19,12 @@ session_start();
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/BigBlog.css"
 
-   
- 
   </head>
+
+
+
+
+
 
   <body>
 
@@ -29,6 +32,7 @@ session_start();
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="#" style="font-size: 2em;">SERIAL BLOG</a>
+          <span style="position: absolute;top:36px;left: 92px;color:white; font-style:italic;">La série que <strong>Vous</strong> écrivez</span>
         </div>
          <ul>
          	<li><a href="?p=home">HOME</a></li>

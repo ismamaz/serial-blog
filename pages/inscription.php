@@ -4,9 +4,9 @@
 
 		<form id="inscritForm" style="margin-top: 40px;" method="post" action="#">
 
-			<label for="pseudo">Choisissez votre pseudo : </label><input type="text" name="pseudo" id="pseudo" placeholder="ex : asterix" required=""><br>
-			<label for="mail1">Votre adresse mail : </label><input type="email" name="mail1" id="mail1" placeholder="ex : asterix@gmail.fr" required><br>
-			<label for"mail2">Confirmez votre adresse : </label><input type="email" name="mail2" id="mail2" placeholder="asterix@gmail.fr" required><br>
+			<label for="pseudo">Choisissez votre pseudo : </label><input type="text" name="pseudo" id="pseudo" placeholder="ex : asterix" required="" autocomplete><br>
+			<label for="mail1">Votre adresse mail : </label><input type="email" name="mail1" id="mail1" placeholder="ex : asterix@gmail.fr" required autocomplete><br>
+			<label for"mail2">Confirmez votre adresse : </label><input type="email" name="mail2" id="mail2" placeholder="asterix@gmail.fr" required autocomplete><br>
 			<label for="password">Choisissez votre mot de passe : </label><input type="password" name="password" id="password" required><br>
 			<input type="submit" id="btn" value="Envoyer" onclick="checker()"> 
 			<input type="reset" value="Reset" id="reset">
