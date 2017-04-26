@@ -2,7 +2,7 @@
 
 
 
-
+require '../pages/templates/head.php';
 	
 //chargement de la page choisie, home par défaut
 ob_start();

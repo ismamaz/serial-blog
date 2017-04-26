@@ -1,7 +1,7 @@
 
 
 
-<h1 style="margin-left: 60px;">ARTICLES RECENTS</h1>
+<h1 style="margin-left: 60px;">POSTEZ VOS IDEES</h1>
 
 
 	<section>
@@ -44,8 +44,24 @@ $req->closeCursor();
 ?>
 					
 
-
+<a href="?deconnexion=oui" style="position:absolute; top:-125px;left:850px;">Deconnexion</a>
 					<div class="art">
+
+
+
+					
+
+					<?php
+
+
+//Déconnexion avec session destroy
+	if (isset($_GET['deconnexion']) && $_GET['deconnexion']=='oui'){
+			session_destroy();
+			header('Location:index.php?p=home');
+	}
+//
+?>
+	
 							<div class="gauche">
 								<p class="date">23 Avril 2017</p>
 								<p class="comment"><a href="?p=commenter">Commenter</a></p>
@@ -133,6 +149,8 @@ if($donnees){
 <?php
 }
 ?>
+
+
 
 
 <?php

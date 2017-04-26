@@ -1,6 +1,6 @@
 
 <div id="inscrit">
-	<h1 style="text-align:center;">INSCRIPTION</h1>
+	<h1 style="position:relative;left: 400px;">INSCRIPTION</h1>
 
 		<form id="inscritForm" style="margin-top: 40px;" method="post" action="#">
 
@@ -10,8 +10,24 @@
 			<label for="password">Choisissez votre mot de passe : </label><input type="password" name="password" id="password" required><br>
 			<input type="submit" id="btn" value="Envoyer" onclick="checker()"> 
 			<input type="reset" value="Reset" id="reset">
+	</form>
+	
+	<img class="hov" src="../pages/images/thewire3.jpg" style="position:absolute; left:1px;top: 52px;" alt="the_wire" width="310px" height="222px">
+	<img class="hov" src="../pages/images/soprano4.jpg" style="position:absolute; left:2px;top: 275px;" alt="the_wire" width="310px" height="222px">
+	<img class="hov" src="../pages/images/soprano5.jpg" style="position:absolute; right:1px;top: 52px;" alt="the_wire" width="310px" height="222px">
+	<img class="hov" src="../pages/images/detective2.jpg" style="position:absolute; right:2px;top: 275px;" alt="the_wire" width="310px" height="222px">
+	
 
 
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	<script>
+
+
+$('.hov').hover(function(){
+	$(this).fadeTo(1000,0.2).fadeTo(1000, 1);
+})
+	</script>
+	
 <?php
 
 
@@ -76,6 +92,8 @@ if ($donnees){
 
 
 if($dispos==2){
+
+
 	$req=$bdd->prepare('INSERT INTO membres (pseudo, mail, password) VALUES (:pseudo, :mail, :password)');
 
 	$donnees=$req->execute(array(
@@ -83,16 +101,24 @@ if($dispos==2){
 		'mail'=>$mail,
 		'password'=>$pass
 		));
+
+	
+
 }else{}
 
 
+
+if(isset($_POST['pseudo'])&&isset($_POST['mail1'])&&isset($_POST['password'])&&$dispos==2){
+	echo 'Bienvenue, '.$_POST['pseudo'].'!';
+header ('Location:index.php?p=home');
+}
 
 ?>
 
 
 
 
-		</form>
+	
 		 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 			<script type="text/javascript">
 
