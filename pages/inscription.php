@@ -1,6 +1,6 @@
 
 <div id="inscrit">
-	<h1 style="position:relative;left: 400px;">INSCRIPTION</h1>
+	<h3 style="position:relative;left: 400px; display: inline-block; background-color: black; color:white; padding-top: 5px; padding-bottom: 5px; padding-left: 18px; padding-right: 18px; border-radius: 5px;">Inscription</h3>
 
 		<form id="inscritForm" style="margin-top: 40px;" method="post" action="#">
 

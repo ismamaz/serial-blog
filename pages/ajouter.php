@@ -1,5 +1,5 @@
 
-35  <div id="liste" style="position:absolute;left: 583px;top:290px;width:535px;background-color:black;color: white;border: 1px solid black;">
+<div id="liste" style="position:absolute;left: 583px;padding-left: 40px;top:290px;width:535px;background-color:black;color: white;border: 1px solid black;">
 <h3 style="margin-left: 11px;font-size: 1.3em;padding-left: 26px; padding-right: 26px; padding-top: 5px;padding-bottom: 5px;border-radius: 5px;color:black;background-color:white;display: inline-block;"><?php  echo $_SESSION['pseudo']; ?> Vos articles </h3>
 
 <a style="color:white;" href="index.php?p=ajouter#">Rafraîchir</a>
@@ -18,7 +18,7 @@ $req->execute(array(
   ));
 
 while ($donnees = $req->fetch()){
-echo '<h4 style="font-style:italic">'.$donnees['date_fr'].'</h4><h2>'. $donnees['titre'] . '</h2><p style="margin-left:100px;">' . $donnees['contenu'].'</p>
+echo '<br><hr><br><h5 style="font-style:italic">'.$donnees['date_fr'].'</h5><h3 style="margin-left: 20px;margin-top:-10px;">'. $donnees['titre'] . '</h3><p style="margin-left:100px;">' . $donnees['contenu'].'</p>
 <a href=index.php?p=ajouter&id_update='.$donnees['id'].'>Modifier</a><br>
 <a href=index.php?p=ajouter&id_delete='.$donnees['id'].'>Supprimer</a>';
 }
@@ -76,18 +76,36 @@ $req->closeCursor();
 </div>
   </div>
 <div id="ajout" style="position:absolute;top:50px;left: 580px;padding-left: 10px; width: 535px;height: 420px;">
-<h3 style="font-size: 1.3em; color:white; background-color: black;display: inline-block;padding: 11px;padding-top: 3px;padding-bottom: 3px;padding-left: 27px;padding-right: 27px;border-radius: 5px;">Ajouter un article</h3>
+<h3 style="font-size: 1.3em; color:white; background-color: black;display: inline-block;padding: 11px;padding-top: 5px;padding-bottom: 5px;padding-left: 27px;padding-right: 27px;border-radius: 5px;position: relative; left: -230px;top: 44px;z-index: 50;opacity: 0.6;">Ajouter une idée</h3>
   <form method="POST" action="#">
-     <label style="margin-bottom:4px;" for="titre">Le titre : </label><input type="text" id="titre" name="titre"><br>
+     <label style="margin-bottom:4px;" for="titre">Le titre : </label><input type="text" id="titre" name="titre" required><br>
 
 <!--      <?php
 //      if (isset($_SESSION['pseudo'])){
 //   echo '<span>bienvenue, '.$_SESSION['pseudo'].'!</span>';
 // }
 ?> -->
-     <textarea id="contenu" name="contenu" style="margin-top:8px;border: 1px solid black;border-radius: 5px;" cols="65" rows="4" placeholder="Votre nouvelle idée de génie"></textarea><br>
+     <textarea id="contenu" name="contenu" style="margin-top:8px;border: 1px solid black;border-radius: 5px;" cols="65" rows="4" placeholder="Votre nouvelle idée de génie" required></textarea><br>
+
+
+
+     <?php
+
+
+        if (isset($_SESSION['pseudo'])){
+     ?>
      <button style="margin-top:5px;background-color: black;color:white; border: 2px solid black; border-radius: 5px;margin-left: 425px;" id="Envoyer">Envoyer</button>
     
+     <?php
+      }else{
+        ?>
+       <a href="index.php?p=home" style="font-size: 1.1em; margin-top:8px;background-color: black;color:white; border: 2px solid black; border-radius: 5px;margin-left: 425px;padding-top: 2px; padding-bottom: 2px; padding-left: 1px; padding-right: 1px;position: relative;right: 47px;top: 5px;">Connectez-vous</a>
+
+      <?php
+             }
+      ?>
+
+
   </form>
 
   <?php
@@ -105,7 +123,7 @@ $req->closeCursor();
     $contenu = htmlspecialchars($_POST['contenu']);
   }
 
-  
+
 
   //Connexion à la base de données
 
@@ -127,10 +145,10 @@ $req->closeCursor();
 </div>
 
 
-<div style="z-index:8;"><a href="?p=home">Retour à l'accueil</a></div>
+
 
 <div id="film" style="position: fixed; top: 43px;left:0px;background-color: black; opacity:0.8; z-index: 2;width:560px; height: 445px;">
-<video style="position:absolute;left: 0px;width: 583px; height: 451px; " src="../pages/images/The Wire.mp4" autoplay loop></video>
+<video style="position:absolute;left: 0px;width: 583px; height: 451px;border-right:2px solid black; " src="../pages/images/The Wire.mp4" autoplay loop></video>
 </div>
 
 

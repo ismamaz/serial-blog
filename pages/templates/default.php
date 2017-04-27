@@ -16,6 +16,7 @@
          <ul>
          	<li><a href="?p=home">HOME</a></li>
          	<li><a href="?p=ajouter">AJOUTER</a></li>
+            <li><a href="?p=concept">CONCEPT</a></li>
          	<li><a href="?p=contact">CONTACT</a></li>
          </ul>
       </div>
@@ -43,8 +44,15 @@ echo $content;
          	<li><a href="?p=contact">CONTACT</li>
          </ul>
 
+
+        <div style="position:relative; left: 445px; top: 95px">
+        <a style="color:white" href="*">contact@SERIALBLOG.COM</a><br>
+ 
+        </div>
+
+
          <div id="planning">
-         <a href="?p=planning">Road Map</a>
+         <a style="position:relative; top: 15px;" href="?p=planning">Road Map</a>
          </div>
 </footer>
  
