@@ -33,7 +33,7 @@ while ($donnees=$req->fetch()){
 							</div>
 
 							<div class="droite">
-									<h2>'.$donnees['titre'].'</h2>
+									<h3>'.$donnees['titre'].'</h3>
 									<p class="contenu">'.$donnees['contenu'].'</p>
 									<p class="par"><em>'.$donnees['auteur'].'</em></p>
 							</div>
@@ -44,7 +44,7 @@ $req->closeCursor();
 ?>
 					
 
-<a href="?deconnexion=oui" style="position:absolute; top:-125px;left:850px;">Deconnexion</a>
+<div style="display: inline-block; width: 120px;z-index:4; position:absolute; top:-125px;left:850px"><a href="?deconnexion=oui">Déconnexion</a></div>
 					<div class="art">
 
 
@@ -61,6 +61,9 @@ $req->closeCursor();
 	}
 //
 ?>
+<div id="film" style="position: fixed; top: 50px;left:550px;background-color: silver; opacity:0.8; z-index: 2;width:550px; height: 438px;">
+<video style="position:absolute;left: 0px" width="797px" src="../pages/images/True Detective.mp4" autoplay loop></video>
+</div>
 	
 							<div class="gauche">
 								<p class="date">23 Avril 2017</p>
@@ -98,7 +101,7 @@ $req->closeCursor();
 				</div>
 			
 
-
+connexion
 
 
 		</div>
@@ -106,9 +109,9 @@ $req->closeCursor();
 <?php
 if (!isset($_SESSION['pseudo'])){
 ?>
-		<aside>
+		<aside id="connexion">
 				<form method="post" action="#">
-				<p class="intitule">Connexion</p>
+				<p style="color: white;" class="intitule">Connexion</p>
 				<input type="email" id="mail" name="mail" placeholder="Votre adresse mail : " required><br>
 				<input type="password" id="password" name="password" placeholder="Votre mot de passe :">
 				<br>
@@ -134,16 +137,13 @@ $donnees=$req->fetch();
 if($donnees){
 	$_SESSION['pseudo']=$donnees['pseudo'];
 
-	echo 'Bienvenue , '.$_SESSION['pseudo'].'!';
-
-
-
+	echo '<div id="bienvenue" style="display:inline-block; padding:7px;border-radius:5px;position:absolute;left: -356px; top: -30px; color:white;background-color:black;font-size: 1.6em;font-weight:bold;">Bienvenue , '.$_SESSION['pseudo'].' !</div>';
 }else{
 	echo '<span style="color:red;">Informations incorrectes</span>';
 }
 
 ?>
-				<input type="submit" id="submit" value="Envoyer">
+				<a href="index.php?p=home&connexion=oui"><input type="submit" id="submit" value="Envoyer"></a>
 				</form>
 		</aside>
 <?php
@@ -157,8 +157,8 @@ if($donnees){
 if(!isset($_SESSION['pseudo'])){
 ?>
 
-		<aside id="inscr">
-		    <a href="?p=inscription"><p class="intitule">Inscription</p></a>
+		<aside id="inscr" style="background-color: rgb(39,40,45);">
+		    <a href="?p=inscription"><p style="color: white;" class="intitule">Inscription</p></a>
 		</aside>
 
 <?php
@@ -171,3 +171,11 @@ if(!isset($_SESSION['pseudo'])){
 
 <a href="?p=ajouter"><p>Lien vers la single</p></a>
 
+
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script>
+	$(function(){
+		$('#bienvenue').delay(1000).hide('explode');
+	});
+
+</script>

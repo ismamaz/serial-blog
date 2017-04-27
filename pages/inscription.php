@@ -9,7 +9,7 @@
 			<label for"mail2">Confirmez votre adresse : </label><input type="email" name="mail2" id="mail2" placeholder="asterix@gmail.fr" required autocomplete><br>
 			<label for="password">Choisissez votre mot de passe : </label><input type="password" name="password" id="password" required><br>
 			<input type="submit" id="btn" value="Envoyer" onclick="checker()"> 
-			<input type="reset" value="Reset" id="reset">
+			<input type="reset" style="margin-left: 246px;" value="Reset" id="reset">
 	</form>
 	
 	<img class="hov" src="../pages/images/thewire3.jpg" style="position:absolute; left:1px;top: 52px;" alt="the_wire" width="310px" height="222px">

@@ -72,7 +72,7 @@ ul>li>a:hover{
 }
 
 aside{
-
+	z-index: 3;
 	position: relative;
 	top: -100px;
 	left: 70px;
