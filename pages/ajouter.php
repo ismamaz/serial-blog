@@ -2,7 +2,7 @@
 <div id="liste" style="position:absolute;left: 583px;padding-left: 40px;top:290px;width:535px;background-color:black;color: white;border: 1px solid black;">
 <h3 style="margin-left: 11px;font-size: 1.3em;padding-left: 26px; padding-right: 26px; padding-top: 5px;padding-bottom: 5px;border-radius: 5px;color:black;background-color:white;display: inline-block;"><?php  echo $_SESSION['pseudo']; ?> Vos articles </h3>
 
-<a style="color:white;" href="index.php?p=ajouter#">Rafraîchir</a>
+
 
 <?php
 
