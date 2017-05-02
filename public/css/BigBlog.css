@@ -13,7 +13,7 @@ section{
 #articles{
 	display: inline-block;
 	
-	width: 60%;
+	width: 54%;
 	margin-left: 0;
 	position: relative;
 	height: 500px;
@@ -100,6 +100,7 @@ footer{
 	position: absolute;
 	bottom: 0;
 	position: fixed;
+	z-index: 3;
 }
 footer >ul{
 	position: absolute;

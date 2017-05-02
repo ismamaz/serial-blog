@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +15,6 @@ session_start();
 
     <!-- Bootstrap core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../public/css/BigBlog.css"s
+    <link rel="stylesheet" href="../public/css/BigBlog.css">
   </head>
 

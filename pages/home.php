@@ -20,6 +20,10 @@
 
 <?php
 
+
+
+//  READ des articles
+
 $pdo = new PDO('mysql:dbname=BigBlog;host=localhost;charset=utf8','root', 'flingualelas&');
 
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -28,41 +32,39 @@ $req=$pdo->query('SELECT titre, contenu, auteur, DATE_FORMAT(date_creation, \'le
 
 
 while ($donnees=$req->fetch()){
-	echo '<div class="art">
+	echo '<hr><div class="art">
 							<div class="gauche">
-								<p class="date">'.$donnees['date_fr'].'</p>
+								<p style="position: relative; right: 10px;" class="date">'.$donnees['date_fr'].'</p>
 								<p class="comment"><a href=?"p=commenter">Commenter</a></p>
 							</div>
 
 							<div class="droite">
-									<h3>'.$donnees['titre'].'</h3>
-									<p class="contenu">'.$donnees['contenu'].'</p>
-									<p class="par"><em>'.$donnees['auteur'].'</em></p>
+									<h3 style="text-decoration:underline;position: relative; right: -30px; bottom: 0px;">'.$donnees['titre'].'</h3>
+									<br><p style="font-size: 0.8em;position:relative; right: 50px;" class="contenu">'.$donnees['contenu'].'</p>
+									<p style="position: relative; left: 60px; font-weight: bold;" class="par"><em>'.$donnees['auteur'].'</em></p>
 							</div>
 				</div>';
 }
 
 $req->closeCursor();
-?>
-					
 
+
+
+//DECONNEXION
+
+?>
 <div style="display: inline-block; width: 120px;z-index:4; position:absolute; top:-125px;left:850px"><a href="?deconnexion=oui">Déconnexion</a></div>
 					<div class="art">
-
-
-
-					
-
 					<?php
-
-
-//Déconnexion avec session destroy
 	if (isset($_GET['deconnexion']) && $_GET['deconnexion']=='oui'){
 			session_destroy();
 			header('Location:index.php?p=home');
 	}
 //
+
+	// VIDEO
 ?>
+
 <div id="film" style="position: fixed; top: 50px;left:550px;background-color: silver; opacity:0.8; z-index: 2;width:550px; height: 440px;">
 <video style="position:absolute;left: 0px;border-left:2px solid black;" width="799px" src="../pages/images/True Detective.mp4" autoplay loop></video>
 </div>
@@ -172,15 +174,18 @@ if(!isset($_SESSION['pseudo'])){
 
 <a href="?p=ajouter"><p>Lien vers la single</p></a>
 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
 
  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script>
+
+
 	$(function(){
-		$('#bienvenue').delay(1000).hide('explode');
+		$('#bienvenue').delay(2000).hide('1000');
 	});
 
 $('#toutes').hover(function(){
-$('#toutes').text('Toutes vos idées');
+$('#toutes').text('Toutes vos idées').text('Toutes vos idées');
 })
 
 </script>

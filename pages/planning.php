@@ -25,6 +25,6 @@
 
 <h3>JEUDI:</h3>
 <ol>
-		<li>UI DESIGN</li>	
+		<li>UI/UX DESIGN</li>	
 		<li>TESTS UTILISATEURS</li>
 </ol>

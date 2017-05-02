@@ -76,7 +76,7 @@ $req->closeCursor();
 </div>
   </div>
 <div id="ajout" style="position:absolute;top:50px;left: 580px;padding-left: 10px; width: 535px;height: 420px;">
-<h3 style="font-size: 1.3em; color:white; background-color: black;display: inline-block;padding: 11px;padding-top: 5px;padding-bottom: 5px;padding-left: 27px;padding-right: 27px;border-radius: 5px;position: relative; left: -230px;top: 44px;z-index: 50;opacity: 0.6;">Ajouter une idée</h3>
+<h3 id="aj" style="font-size: 1.3em; color:white; background-color: black;display: inline-block;padding: 11px;padding-top: 5px;padding-bottom: 5px;padding-left: 27px;padding-right: 27px;border-radius: 5px;position: relative; left: -230px;top: 44px;z-index: 50;opacity: 0.5;">Ajouter une idée</h3>
   <form method="POST" action="#">
      <label style="margin-bottom:4px;" for="titre">Le titre : </label><input type="text" id="titre" name="titre" required><br>
 
@@ -99,10 +99,11 @@ $req->closeCursor();
      <?php
       }else{
         ?>
-       <a href="index.php?p=home" style="font-size: 1.1em; margin-top:8px;background-color: black;color:white; border: 2px solid black; border-radius: 5px;margin-left: 425px;padding-top: 2px; padding-bottom: 2px; padding-left: 1px; padding-right: 1px;position: relative;right: 47px;top: 5px;">Connectez-vous</a>
-
+       <a href="index.php?p=home" style="font-size: 1.1em; margin-top:8px;background-color: black;color:white; border: 2px solid black; border-radius: 5px;margin-left: 425px;padding-top: 2px; padding-bottom: 2px; padding-left: 1px; padding-right: 1px;position: relative;right: 47px;top: 5px;"><button onclick="sauvegarder()" id="seConnecter" style="color: white; background-color: black;">Connectez-vous</button></a>
+       <button onclick="alerter()">clique ca</button>
       <?php
              }
+
       ?>
 
 
@@ -110,7 +111,7 @@ $req->closeCursor();
 
   <?php
 
-
+$yo = 'yoyoyo';
 // Fonctionnalité : Ajouter un article
 
 // Assignation des variables
@@ -122,6 +123,8 @@ $req->closeCursor();
  if (isset($_POST['contenu'])){
     $contenu = htmlspecialchars($_POST['contenu']);
   }
+
+
 
 
 
@@ -147,8 +150,8 @@ $req->closeCursor();
 
 
 
-<div id="film" style="position: fixed; top: 43px;left:0px;background-color: black; opacity:0.8; z-index: 2;width:560px; height: 445px;">
-<video style="position:absolute;left: 0px;width: 583px; height: 451px;border-right:2px solid black; " src="../pages/images/The Wire.mp4" autoplay loop></video>
+<div id="film" style="position: fixed; top: 43px;left:0px;background-color: black; opacity:0.8; z-index: 2;width:560px; height: 445px;display: none;">
+<video style="position:absolute; left: 0; z-index: -3; width: 583px; height: 451px;border-right:2px solid black; " src="../pages/images/The Wire.mp4" autoplay loop></video>
 </div>
 
 
@@ -156,7 +159,55 @@ $req->closeCursor();
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
 <script>
 
+
+$('#film').delay(10).fadeIn('slow');
+
+
+var deja=0;
+
 $(function(){
   $('#bienAjouté').delay(1000).fadeOut('explode');
 });
+
+var titre = $('#titre').val();
+localStorage.setItem("titre", titre);
+
+
+// LAISSER le titre et le contenu en place pdt qu'il part s'inscrire ou se connecter
+
+
+// function sauvegarder(){
+    
+//     var titre = $('#titre').val();
+//     var contenu = $('#contenu').val();
+//     var titres=[];
+//     var contenus=[];
+ 
+ 
+//     titres.unshift(titre);
+//     contenus.unshift(contenu);
+//     deja++;
+//   }
+
+
+$(function(){
+
+  $(window).load(function(){ 
+console.log (localStorage.getItem("titre"));
+  //     function recuperer(){
+  //           if (deja>0){
+  //             alert('yo');
+  //             $('#titre').val(titres[deja-1]);
+  //             $('#contenu').val(contenus[deja]);  
+  //           }
+  //     }
+  //     recuperer();
+  
+  });
+
+});   
+
+
+
+
 </script>
