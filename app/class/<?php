@@ -1,0 +1,18 @@
+<?php
+  class Autoloader{
+  static function register(){
+ 	spl-autolad-register(array('__CLASS__', 'autoload');
+ }
+
+ static function autoload($class_name){
+	require 'class/'.$class_name.'.php';
+}	
+
+
+
+}
+
+?>
+
+require Autoloader;
+Autoloader::register();

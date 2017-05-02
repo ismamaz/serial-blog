@@ -24,14 +24,21 @@
 
 //  READ des articles
 
-$pdo = new PDO('mysql:dbname=BigBlog;host=localhost;charset=utf8','root', 'flingualelas&');
-
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-$req=$pdo->query('SELECT titre, contenu, auteur, DATE_FORMAT(date_creation, \'le %d/%m/%Y à %Hh%imin%ss\') AS date_fr FROM articles ORDER BY date_creation DESC LIMIT 0, 5');
 
 
-while ($donnees=$req->fetch()){
+
+//ancien pdo 
+
+require '../app/class/Database.php';
+
+$db = new Database('BigBlog');
+
+
+$req = $db->query('SELECT titre, contenu, auteur, DATE_FORMAT(date_creation, \'le %d/%m/%Y à %Hh%imin%ss\') AS date_fr FROM articles ORDER BY date_creation DESC');
+
+
+while($donnees=$req->fetch()){
+ 
 	echo '<hr><div class="art">
 							<div class="gauche">
 								<p style="position: relative; right: 10px;" class="date">'.$donnees['date_fr'].'</p>
@@ -44,9 +51,9 @@ while ($donnees=$req->fetch()){
 									<p style="position: relative; left: 60px; font-weight: bold;" class="par"><em>'.$donnees['auteur'].'</em></p>
 							</div>
 				</div>';
-}
 
-$req->closeCursor();
+
+}
 
 
 
