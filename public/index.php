@@ -7,6 +7,13 @@
 
 require '../pages/templates/head.php';
 
+
+
+// connexion à la bdd via la classe Database
+require '../app/class/Database.php';
+
+$db = new Database('BigBlog');
+
 //chargement de la page choisie, home par défaut
 ob_start();
 

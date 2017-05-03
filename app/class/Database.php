@@ -34,7 +34,8 @@ class Database{
 
 	public function query($statement){
 		$req= $this->getPDO()->query($statement);
-		return $req;
+		$donnees=$req->fetchAll();
+		return $donnees;
 
 	}
 

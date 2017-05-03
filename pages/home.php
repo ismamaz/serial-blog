@@ -1,6 +1,4 @@
 
-
-
 <h1 id="toutes" style="font-family: 'Helvetica neue'; font-size: 1.3em;display: inline-block;margin-left: 60px; position: relative; top: -17px; background-color: rgb(39,40,45);color: white; padding-top: 5px; padding-bottom: 5px; padding-left: 21px; padding-right:21px;border-radius: 5px;">Toutes les idées</h1>
 
 
@@ -10,35 +8,14 @@
 
 		<div id="articles">
 
-
-
-
-
-
-
-
-
 <?php
-
-
 
 //  READ des articles
 
 
+foreach($db->query('SELECT titre, contenu, auteur, DATE_FORMAT(date_creation, \'le %d/%m/%Y à %Hh%imin%ss\') AS date_fr FROM articles ORDER BY date_creation DESC') as $donnees){
 
 
-//ancien pdo 
-
-require '../app/class/Database.php';
-
-$db = new Database('BigBlog');
-
-
-$req = $db->query('SELECT titre, contenu, auteur, DATE_FORMAT(date_creation, \'le %d/%m/%Y à %Hh%imin%ss\') AS date_fr FROM articles ORDER BY date_creation DESC');
-
-
-while($donnees=$req->fetch()){
- 
 	echo '<hr><div class="art">
 							<div class="gauche">
 								<p style="position: relative; right: 10px;" class="date">'.$donnees['date_fr'].'</p>
@@ -52,9 +29,7 @@ while($donnees=$req->fetch()){
 							</div>
 				</div>';
 
-
 }
-
 
 
 //DECONNEXION
@@ -117,6 +92,8 @@ while($donnees=$req->fetch()){
 		</div>
 
 <?php
+
+//Connexion
 if (!isset($_SESSION['pseudo'])){
 ?>
 		<aside id="connexion" style="padding-top: 3px;">
