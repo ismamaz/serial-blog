@@ -53,19 +53,20 @@ $req->closeCursor();
 //POur DELETE l'article ----------------------------
 
 if (isset($_GET['id_delete'])){
-
+ header('Location: index.php?p=ajouter');
   $id_delete = htmlspecialchars($_GET['id_delete']);
  
 
-  $bdd= new PDO('mysql:host=localhost;dbname=BigBlog;charset=utf8', 'root', 'flingualelas&');
-  $req= $bdd->prepare('DELETE FROM articles WHERE id = :id');
-  $req->execute(array(
+  $db->execute('DELETE FROM articles WHERE id = :id', array(
   'id'=> $id_delete
   ));
+ 
+
 }
 
 
-$req->closeCursor();
+
+
 ?>
 
 
@@ -78,14 +79,18 @@ $req->closeCursor();
 <div id="ajout" style="position:absolute;top:50px;left: 580px;padding-left: 10px; width: 535px;height: 420px;">
 <h3 id="aj" style="font-size: 1.3em; color:white; background-color: black;display: inline-block;padding: 11px;padding-top: 5px;padding-bottom: 5px;padding-left: 27px;padding-right: 27px;border-radius: 5px;position: relative; left: -230px;top: 44px;z-index: 50;opacity: 0.5;">Ajouter une idée</h3>
   <form method="POST" action="#">
-     <label style="margin-bottom:4px;" for="titre">Le titre : </label><input type="text" id="titre" name="titre" required><br>
+     <label style="margin-bottom:4px;" for="titre">Le titre : </label><input type="text" id="titre" name="titre" 
+     <?php if(isset($_SESSION['pseudo'])){ ?> required <?php } ?> <br>
 
 <!--      <?php
 //      if (isset($_SESSION['pseudo'])){
 //   echo '<span>bienvenue, '.$_SESSION['pseudo'].'!</span>';
 // }
 ?> -->
-     <textarea id="contenu" name="contenu" style="margin-top:8px;border: 1px solid black;border-radius: 5px;" cols="65" rows="4" placeholder="Votre nouvelle idée de génie" required></textarea><br>
+     <textarea id="contenu" name="contenu" style="margin-top:8px;border: 1px solid black;border-radius: 5px;" cols="65" rows="4" placeholder="Votre nouvelle idée de génie" required
+<?php   if(!isset($_SESSION['pseudo'])){
+  ?> disabled <?php } ?>
+></textarea><br>
 
 
 
@@ -99,11 +104,9 @@ $req->closeCursor();
      <?php
       }else{
         ?>
-       <a href="index.php?p=home" style="font-size: 1.1em; margin-top:8px;background-color: black;color:white; border: 2px solid black; border-radius: 5px;margin-left: 425px;padding-top: 2px; padding-bottom: 2px; padding-left: 1px; padding-right: 1px;position: relative;right: 47px;top: 5px;"><button onclick="sauvegarder()" id="seConnecter" style="color: white; background-color: black;">Connectez-vous</button></a>
-       <button onclick="alerter()">clique ca</button>
+       <a href="index.php?p=home" style="font-size: 1.1em; margin-top:8px;background-color: black;color:white; border: 2px solid black; border-radius: 5px;margin-left: 425px;padding: 6px 12px;position: relative;right: 47px;top: 5px;">Connectez-vous</a>
       <?php
              }
-
       ?>
 
 
@@ -173,21 +176,7 @@ var titre = $('#titre').val();
 localStorage.setItem("titre", titre);
 
 
-// LAISSER le titre et le contenu en place pdt qu'il part s'inscrire ou se connecter
 
-
-// function sauvegarder(){
-    
-//     var titre = $('#titre').val();
-//     var contenu = $('#contenu').val();
-//     var titres=[];
-//     var contenus=[];
- 
- 
-//     titres.unshift(titre);
-//     contenus.unshift(contenu);
-//     deja++;
-//   }
 
 
 $(function(){

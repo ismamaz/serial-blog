@@ -1,4 +1,3 @@
-
 <h1 id="toutes" style="font-family: 'Helvetica neue'; font-size: 1.3em;display: inline-block;margin-left: 60px; position: relative; top: -17px; background-color: rgb(39,40,45);color: white; padding-top: 5px; padding-bottom: 5px; padding-left: 21px; padding-right:21px;border-radius: 5px;">Toutes les idées</h1>
 
 
@@ -48,43 +47,14 @@ foreach($db->query('SELECT titre, contenu, auteur, DATE_FORMAT(date_creation, \'
 ?>
 
 <div id="film" style="position: fixed; top: 50px;left:550px;background-color: silver; opacity:0.8; z-index: 2;width:550px; height: 440px;">
-<video style="position:absolute;left: 0px;border-left:2px solid black;" width="799px" src="../pages/images/True Detective.mp4" autoplay loop></video>
+	<video style="position:absolute;left: 0px;border-left:2px solid black;" width="799px" src="../pages/images/True Detective.mp4" autoplay loop></video>
 </div>
 	
-							<div class="gauche">
-								<p class="date">23 Avril 2017</p>
-								<p class="comment"><a href="?p=commenter">Commenter</a></p>
-							</div>
-
-							<div class="droite">
-									<h2>Titre</h2>
-									<p class="par">Par : Auteur</p>
-							</div>
 				</div>
 
-				<div class="art">
-							<div class="gauche">
-								<p class="date">23 Avril 2017</p>
-								<p class="comment"><a href="?p=commenter">Commenter</a></p>
-							</div>
+				
 
-							<div class="droite">
-									<h2>Titre</h2>
-									<p class="par">Par : Auteur</p>
-							</div>
-				</div>
-
-				<div class="art">
-							<div class="gauche">
-								<p class="date">23 Avril 2017</p>
-								<p class="comment"><a href="?p=commenter">Commenter</a></p>
-							</div>
-
-							<div class="droite">
-									<h2>Titre</h2>
-									<p class="par">Par : Auteur</p>
-							</div>
-				</div>
+				
 			
 
 
@@ -110,16 +80,16 @@ $mail=htmlspecialchars($_POST['mail']);
 
 
 //connexion à la table membres
-$pdo=new PDO('mysql:host=localhost;dbname=BigBlog;charset=utf8', 'root', 'flingualelas&');
 
-$req=$pdo->prepare('SELECT * FROM membres WHERE mail = :mail AND password = :password');
 
-$req->execute(array(
+foreach( $db->execute('SELECT * FROM membres WHERE mail = :mail AND password = :password', array(
 'mail'=>$mail,
 'password'=>$pass
-	));
+ )) as $donnees){
 
-$donnees=$req->fetch();
+
+
+
 
 if($donnees){
 	$_SESSION['pseudo']=$donnees['pseudo'];
@@ -127,6 +97,9 @@ if($donnees){
 	echo '<div id="bienvenue" style="display:inline-block; padding:7px;border-radius:5px;position:absolute;left: -356px; top: -5px; color:white;background-color:black;font-size: 1.6em;font-weight:bold; box-shadow: 2px 2px 1px black;">Bienvenue , '.$_SESSION['pseudo'].' !</div>';
 }else{
 	echo '<span style="color:red; position: relative; top: 8px;">Informations incorrectes</span>';
+}
+
+
 }
 
 ?>

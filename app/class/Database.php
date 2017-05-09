@@ -31,19 +31,30 @@ class Database{
 		
 	}
 
+// Fonction Query
 
 	public function query($statement){
+
 		$req= $this->getPDO()->query($statement);
 		$donnees=$req->fetchAll();
 		return $donnees;
-
 	}
 
 
-	
+//Fonction Execute
+
+	public function execute($statement, $array){
+		$req=$this->getPDO()->prepare($statement);
+
+		$req->execute($array);
+
+		$donnees=$req->fetchAll();
+		return $donnees;
+	}
 
 
 
 }
+
 
 ?>
